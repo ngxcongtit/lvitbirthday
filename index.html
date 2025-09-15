@@ -59,6 +59,15 @@
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
     }
+    .duck {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 80%; /* height on screen */
+      left: -60px; /* start off-screen */
+      z-index: 3;
+      transition: transform 0.1s linear;
+    }
   </style>
 </head>
 <body>
@@ -75,10 +84,26 @@
     </div>
   </div>
 
+ <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Duck_icon.png" alt="Duck" class="duck" id="duck">
+
   <script>
     function showMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
     }
+
+    // Duck movement
+    const duck = document.getElementById('duck');
+    let position = -60; // starting left
+    const speed = 2; // pixels per frame
+    function moveDuck() {
+      position += speed;
+      if(position > window.innerWidth + 60) {
+        position = -60; // reset to start
+      }
+      duck.style.left = position + 'px';
+      requestAnimationFrame(moveDuck);
+    }
+    moveDuck();
   </script>
 </body>
 </html>
