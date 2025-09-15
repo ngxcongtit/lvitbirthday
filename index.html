@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title> Sinh nhật vợ hehe </title>
+  <title>Sinh nhật vợ hehe</title>
   <style>
     * {
       margin: 0;
@@ -12,13 +12,14 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       height: 100vh;
-      background: url("https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/hintergrund.JPG") no-repeat center center/cover;
+      background: url("https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/hintergrund.JPG") no-repeat center center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: #fff;
       overflow: hidden;
+      position: relative;
     }
     .overlay {
       background: rgba(0, 0, 0, 0.5);
@@ -26,14 +27,17 @@
       border-radius: 20px;
       max-width: 700px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      z-index: 2;
+      position: relative;
     }
     h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       margin-bottom: 0.5em;
     }
     p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin-bottom: 1em;
+      line-height: 1.5;
     }
     button {
       margin-top: 1em;
@@ -59,34 +63,38 @@
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
     }
+    /* Duck animation */
     .duck {
       position: absolute;
       width: 50px;
       height: 50px;
-      top: 90%; /* height on screen */
-      left: -60px; /* start off-screen */
+      top: 90%;
+      left: -60px;
       z-index: 3;
-      transition: transform 0.1s linear;
     }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt </h1>
+    <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt</h1>
     <p>
-       Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. 
-    Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi=))). Ở đây viết ngắn gọn thui ạ, 
-      Chúc bé luôn xinh đẹp iu đời (iu anh nứa). Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi=))
+      Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. 
+      Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi =))).  
+      Ở đây viết ngắn gọn thui ạ, chúc bé luôn xinh đẹp iu đời (iu anh nứa).  
+      Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi =))
     </p>
-    <button onclick="showMessage()"> Đừng bấm </button>
+    <button onclick="showMessage()">Đừng bấm</button>
     <div class="hidden-message" id="hiddenMessage">
-      Anh yêu vợ anh siêu cấp 
+      Anh yêu vợ anh siêu cấp ❤️
     </div>
   </div>
 
- <img src="https://github.com/ngxcongtit/lvitbirthday/blob/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" alt="Duck" class="duck" id="duck">
+  <!-- Duck image -->
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" 
+       alt="Duck" class="duck" id="duck">
 
   <script>
+    // Show hidden message
     function showMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
     }
