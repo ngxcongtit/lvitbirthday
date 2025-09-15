@@ -63,7 +63,7 @@
       position: absolute;
       width: 50px;
       height: 50px;
-      top: 80%; /* height on screen */
+      top: 20%; /* height on screen */
       left: -60px; /* start off-screen */
       z-index: 3;
       transition: transform 0.1s linear;
@@ -84,7 +84,7 @@
     </div>
   </div>
 
- <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Duck_icon.png" alt="Duck" class="duck" id="duck">
+ <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fillustrations%2Fduck-icon&psig=AOvVaw237Kae_7QWJy5Ejh-I6Oc-&ust=1758054314942000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMD5-unM248DFQAAAAAdAAAAABAE" alt="Duck" class="duck" id="duck">
 
   <script>
     function showMessage() {
@@ -94,7 +94,7 @@
     // Duck movement
     const duck = document.getElementById('duck');
     let position = -60; // starting left
-    const speed = 2; // pixels per frame
+    const speed = 1.5; // pixels per frame
     function moveDuck() {
       position += speed;
       if(position > window.innerWidth + 60) {
