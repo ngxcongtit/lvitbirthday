@@ -63,6 +63,28 @@
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
     }
+    .page-ribbon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: linear-gradient(90deg, #ff6b81, #ff4757);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: ribbonWave 2s ease-in-out infinite alternate;
+}
+
+/* optional gentle waving effect */
+@keyframes ribbonWave {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
     /* Moving images */
     .duck, .cat {
       position: absolute;
