@@ -89,7 +89,7 @@
     </div>
   </div>
 
-  <!-- Duck image -->
+  <!-- ảnh 1 -->
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" 
        alt="Duck" class="duck" id="duck">
 
@@ -97,6 +97,7 @@
     // Show hidden message
     function showMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
+      spawnHearts();
     }
 
     // Duck movement
@@ -112,6 +113,48 @@
       requestAnimationFrame(moveDuck);
     }
     moveDuck();
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_9417.PNG" 
+       alt="Cat" class="cat" id="cat">
+        // Cat movement (slower)
+    const cat = document.getElementById('cat');
+    let catPos = -100;
+    const catSpeed = 1; 
+    function moveCat() {
+      catPos += catSpeed;
+      if (catPos > window.innerWidth + 100) {
+        catPos = -100;
+      }
+      cat.style.left = catPos + 'px';
+      requestAnimationFrame(moveCat);
+    }
+    moveCat();
+      // Floating hearts
+  function spawnHearts() {
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement("div");
+      heart.textContent = "❤️";
+      heart.style.position = "absolute";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.bottom = "0px";
+      heart.style.fontSize = (20 + Math.random() * 30) + "px";
+      heart.style.opacity = "1";
+      heart.style.transition = "all 4s ease-out";
+      document.body.appendChild(heart);
+
+      // Animate after a tiny delay
+      setTimeout(() => {
+        heart.style.bottom = "100vh";
+        heart.style.opacity = "0";
+      }, 50);
+
+      // Remove after animation ends
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+  }
+  for (let i = 0; i < 8; i++) {
+    createDuck();
   </script>
 </body>
 </html>
