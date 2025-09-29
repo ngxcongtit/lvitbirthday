@@ -178,18 +178,23 @@
   const fugglerIds = ["fuggler1","fuggler2","fuggler3"];
   const fugglers = fugglerIds.map(id => document.getElementById(id));
   fugglers.forEach(f => {
-    setInterval(()=>{
-      f.style.bottom = 10 + Math.random()*30 + "%";
+    function spawnFuggler(){
       f.style.left = "-60px";
-      const speed = 1.5 + Math.random()*1.5;
-      let pos = -60;
+      const speed = 1 + Math.random()*2;
+      let posX = -60;
+      const amplitude = 20 + Math.random()*30; // vertical bounce
+      const frequency = 0.02 + Math.random()*0.03;
+      const startY = 5 + Math.random()*20;
       function move(){
-        pos += speed;
-        f.style.left = pos + "px";
-        if(pos < window.innerWidth+60) requestAnimationFrame(move);
+        posX += speed;
+        f.style.left = posX + "px";
+        f.style.bottom = startY + Math.sin(posX*frequency)*amplitude + "%";
+        if(posX < window.innerWidth+60) requestAnimationFrame(move);
+        else setTimeout(spawnFuggler, Math.random()*5000 + 2000);
       }
       move();
-    }, 5000 + Math.random()*7000);
+    }
+    spawnFuggler();
   });
 
   // Chicken nuggets
