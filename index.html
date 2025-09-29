@@ -63,14 +63,18 @@
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
     }
-    /* Duck animation */
-    .duck {
+    /* Moving images */
+    .duck, .cat {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      top: 90%;
-      left: -60px;
+      width: 60px;
+      height: 60px;
+      bottom: 10%;
+      left: -80px;
       z-index: 3;
+    }
+    .cat {
+      bottom: 25%;
+      width: 70px;
     }
   </style>
 </head>
@@ -89,9 +93,13 @@
     </div>
   </div>
 
-  <!-- ảnh 1 -->
+  <!-- Duck -->
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" 
        alt="Duck" class="duck" id="duck">
+
+  <!-- Cat -->
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" 
+       alt="Cat" class="cat" id="cat">
 
   <script>
     // Show hidden message
@@ -100,61 +108,57 @@
       spawnHearts();
     }
 
+    // Floating hearts
+    function spawnHearts() {
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement("div");
+        heart.textContent = "❤️";
+        heart.style.position = "absolute";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "0px";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+        heart.style.opacity = "1";
+        heart.style.transition = "all 4s ease-out";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.style.bottom = "100vh";
+          heart.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+
     // Duck movement
     const duck = document.getElementById('duck');
-    let position = -60; // starting left
-    const speed = 1.5; // pixels per frame
+    let duckPos = -80;
+    const duckSpeed = 2;
     function moveDuck() {
-      position += speed;
-      if(position > window.innerWidth + 60) {
-        position = -60; // reset to start
+      duckPos += duckSpeed;
+      if (duckPos > window.innerWidth + 100) {
+        duckPos = -80;
       }
-      duck.style.left = position + 'px';
+      duck.style.left = duckPos + 'px';
       requestAnimationFrame(moveDuck);
     }
     moveDuck();
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_9417.PNG" 
-       alt="Cat" class="cat" id="cat">
-        // Cat movement (slower)
+
+    // Cat movement
     const cat = document.getElementById('cat');
     let catPos = -100;
     const catSpeed = 1; 
     function moveCat() {
       catPos += catSpeed;
-      if (catPos > window.innerWidth + 100) {
+      if (catPos > window.innerWidth + 120) {
         catPos = -100;
       }
       cat.style.left = catPos + 'px';
       requestAnimationFrame(moveCat);
     }
     moveCat();
-      // Floating hearts
-  function spawnHearts() {
-    for (let i = 0; i < 10; i++) {
-      const heart = document.createElement("div");
-      heart.textContent = "❤️";
-      heart.style.position = "absolute";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.bottom = "0px";
-      heart.style.fontSize = (20 + Math.random() * 30) + "px";
-      heart.style.opacity = "1";
-      heart.style.transition = "all 4s ease-out";
-      document.body.appendChild(heart);
-
-      // Animate after a tiny delay
-      setTimeout(() => {
-        heart.style.bottom = "100vh";
-        heart.style.opacity = "0";
-      }, 50);
-
-      // Remove after animation ends
-      setTimeout(() => {
-        heart.remove();
-      }, 4000);
-    }
-  }
-  for (let i = 0; i < 8; i++) {
-    createDuck();
   </script>
 </body>
 </html>
