@@ -87,7 +87,7 @@
     }
 
     /* Moving images */
-    .duck, .cat {
+    .duck, .cat, .frog, .octopus, .unicorn {
       position: absolute;
       width: 60px;
       height: 60px;
@@ -95,10 +95,10 @@
       left: -80px;
       z-index: 3;
     }
-    .cat {
-      bottom: 25%;
-      width: 70px;
-    }
+    .cat { bottom: 25%; width: 70px; }
+    .frog { bottom: 10%; width: 50px; }
+    .octopus { bottom: 15%; width: 60px; }
+    .unicorn { bottom: 5%; width: 65px; }
 
     /* Painting */
     .painting {
@@ -116,15 +116,8 @@
       animation: swing 4s ease-in-out infinite alternate;
       transform-origin: top center;
     }
-    .painting img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    @keyframes swing {
-      0% { transform: rotate(-5deg); }
-      100% { transform: rotate(5deg); }
-    }
+    .painting img { width: 100%; height: 100%; object-fit: cover; }
+    @keyframes swing { 0% { transform: rotate(-5deg); } 100% { transform: rotate(5deg); } }
 
     /* Confetti */
     #confetti-container {
@@ -144,18 +137,13 @@
       opacity: 0.8;
       animation: fall linear forwards;
     }
-    @keyframes fall {
-      0% { transform: translateY(-10px) rotate(0deg); }
-      100% { transform: translateY(110vh) rotate(360deg); }
-    }
+    @keyframes fall { 0% { transform: translateY(-10px) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <!-- Page Ribbon -->
   <div class="page-ribbon">🎉 Happy Birthday, my love! 🎉</div>
 
-  <!-- Overlay with text -->
   <div class="overlay">
     <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt</h1>
     <p>
@@ -170,30 +158,27 @@
     </div>
   </div>
 
-  <!-- Moving Duck -->
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" 
-       alt="Duck" class="duck" id="duck">
+  <!-- Moving creatures -->
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" alt="Duck" class="duck" id="duck">
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" alt="Cat" class="cat" id="cat">
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/6D245F3F-8E60-4D84-A917-73B075D03DB0.JPG" alt="Frog" class="frog" id="frog">
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_6139.PNG" alt="Octopus" class="octopus" id="octopus">
+  <img src="https://github.com/ngxcongtit/lvitbirthday/blob/main/9F4C5F4B-61D4-4FA2-8D6D-408375853B04.JPG" alt="Unicorn" class="unicorn" id="unicorn">
 
-  <!-- Moving Cat -->
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" 
-       alt="Cat" class="cat" id="cat">
-
-  <!-- Swinging Painting -->
+  <!-- Swinging painting -->
   <div class="painting">
-    <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/our-picture.jpg" alt="Our Picture">
+    <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_0637.HEIC" alt="Our Picture">
   </div>
 
-  <!-- Confetti Container -->
+  <!-- Confetti -->
   <div id="confetti-container"></div>
 
   <script>
-    // Show hidden message + hearts
     function showMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
       spawnHearts();
     }
 
-    // Floating hearts
     function spawnHearts() {
       for (let i = 0; i < 10; i++) {
         const heart = document.createElement("div");
@@ -205,60 +190,21 @@
         heart.style.opacity = "1";
         heart.style.transition = "all 4s ease-out";
         document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.style.bottom = "100vh";
-          heart.style.opacity = "0";
-        }, 50);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 4000);
+        setTimeout(() => { heart.style.bottom = "100vh"; heart.style.opacity = "0"; }, 50);
+        setTimeout(() => heart.remove(), 4000);
       }
     }
 
-    // Duck movement
-    const duck = document.getElementById('duck');
-    let duckPos = -80;
-    const duckSpeed = 1.5;
-    function moveDuck() {
-      duckPos += duckSpeed;
-      if (duckPos > window.innerWidth + 100) duckPos = -80;
-      duck.style.left = duckPos + 'px';
-      requestAnimationFrame(moveDuck);
-    }
-    moveDuck();
+    // Moving creatures
+    const creatures = [
+      {el: document.getElementById('duck'), speed: 1.5, pos: -80},
+      {el: document.getElementById('cat'), speed: 1, pos: -100},
+      {el: document.getElementById('frog'), speed: 2, pos: -60},
+      {el: document.getElementById('octopus'), speed: 1.2, pos: -90},
+      {el: document.getElementById('unicorn'), speed: 1.7, pos: -70}
+    ];
 
-    // Cat movement
-    const cat = document.getElementById('cat');
-    let catPos = -100;
-    const catSpeed = 1;
-    function moveCat() {
-      catPos += catSpeed;
-      if (catPos > window.innerWidth + 120) catPos = -100;
-      cat.style.left = catPos + 'px';
-      requestAnimationFrame(moveCat);
-    }
-    moveCat();
-
-    // Continuous Confetti
-    function spawnConfetti() {
-      const container = document.getElementById("confetti-container");
-      const colors = ["#ff6b81","#ff4757","#ffe066","#ff9ff3","#70a1ff"];
-      for (let i = 0; i < 5; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.width = 5 + Math.random() * 10 + "px";
-        confetti.style.height = 5 + Math.random() * 10 + "px";
-        confetti.style.animationDuration = 3 + Math.random() * 3 + "s";
-        container.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 6000);
-      }
-    }
-    setInterval(spawnConfetti, 200);
-  </script>
-
-</body>
-</html>
+    creatures.forEach(c => {
+      function move() {
+        c.pos += c.speed;
+        if(c.pos
