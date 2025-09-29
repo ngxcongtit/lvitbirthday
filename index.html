@@ -4,158 +4,114 @@
   <meta charset="UTF-8" />
   <title>Sinh nhật vợ hehe</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      height: 100vh;
+      height:100vh;
       background: url("https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/hintergrund.JPG") no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
-      position: relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:#fff;
+      overflow:hidden;
+      position:relative;
     }
     .overlay {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 2em;
-      border-radius: 20px;
-      max-width: 700px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      z-index: 2;
-      position: relative;
+      background: rgba(0,0,0,0.5);
+      padding:2em;
+      border-radius:20px;
+      max-width:700px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.5);
+      z-index:2;
+      position:relative;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-      line-height: 1.5;
-    }
+    h1 { font-size:2.5em; margin-bottom:0.5em; }
+    p { font-size:1.2em; margin-bottom:1em; line-height:1.5; }
     button {
-      margin-top: 1em;
-      padding: 0.8em 1.5em;
-      font-size: 1em;
-      border: none;
-      border-radius: 25px;
-      background: #ff6b81;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
+      margin-top:1em;
+      padding:0.8em 1.5em;
+      font-size:1em;
+      border:none;
+      border-radius:25px;
+      background:#ff6b81;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
     }
-    button:hover {
-      background: #ff4757;
-    }
+    button:hover { background:#ff4757; }
     .hidden-message {
-      display: none;
-      margin-top: 1em;
-      font-size: 1.2em;
-      animation: fadeIn 1.2s ease forwards;
+      display:none;
+      margin-top:1em;
+      font-size:1.2em;
+      animation:fadeIn 1.2s ease forwards;
     }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 
-    /* Page Ribbon */
+    /* Ribbon */
     .page-ribbon {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 10px 0;
-      background: linear-gradient(90deg, #ff6b81, #ff4757);
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      font-size: 1.5em;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: ribbonWave 2s ease-in-out infinite alternate;
+      top:0;
+      left:0;
+      width:100%;
+      padding:10px 0;
+      background: linear-gradient(90deg,#ff6b81,#ff4757);
+      color:white;
+      font-weight:bold;
+      text-align:center;
+      font-size:1.5em;
+      z-index:10;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      animation:ribbonWave 2s ease-in-out infinite alternate;
     }
-    @keyframes ribbonWave {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-3px) rotate(-1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
+    @keyframes ribbonWave {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-3px) rotate(-1deg);}100%{transform:translateY(0) rotate(0deg);} }
 
-    /* Moving images */
-    .duck, .cat, .frog, .octopus, .unicorn {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      bottom: 10%;
-      left: -80px;
-      z-index: 3;
-    }
-    .cat { bottom: 25%; width: 70px; }
-    .frog { bottom: 10%; width: 50px; }
-    .octopus { bottom: 15%; width: 60px; }
-    .unicorn { bottom: 5%; width: 65px; }
+    /* Moving creatures */
+    .duck,.cat,.frog,.octopus,.unicorn {position:absolute; width:60px; height:60px; bottom:10%; left:-80px; z-index:3;}
+    .cat {bottom:25%; width:70px;}
+    .frog {bottom:10%; width:50px;}
+    .octopus {bottom:15%; width:60px;}
+    .unicorn {bottom:5%; width:65px;}
 
     /* Painting */
     .painting {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 180px;
-      height: 220px;
-      background: #fff;
-      border: 10px solid #8b5e3c;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      z-index: 5;
-      overflow: hidden;
-      animation: swing 4s ease-in-out infinite alternate;
-      transform-origin: top center;
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:180px;
+      height:220px;
+      background:#fff;
+      border:10px solid #8b5e3c;
+      border-radius:8px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.5);
+      z-index:5;
+      overflow:hidden;
+      animation:swing 4s ease-in-out infinite alternate;
+      transform-origin:top center;
     }
-    .painting img { width: 100%; height: 100%; object-fit: cover; }
-    @keyframes swing { 0% { transform: rotate(-5deg); } 100% { transform: rotate(5deg); } }
+    .painting img { width:100%; height:100%; object-fit:cover; }
+    @keyframes swing {0%{transform:rotate(-5deg);}100%{transform:rotate(5deg);}}
 
     /* Confetti */
     #confetti-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 15;
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:15;
     }
     .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-      opacity: 0.8;
-      animation: fall linear forwards;
+      position:absolute; width:10px; height:10px; border-radius:3px; opacity:0.8;
+      animation:fall linear forwards;
     }
-    @keyframes fall { 0% { transform: translateY(-10px) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+    @keyframes fall {0%{transform:translateY(-10px) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
   </style>
 </head>
 <body>
-
   <div class="page-ribbon">🎉😱 Đinh Gia Linh hơn Công Tiến 1 tuổi 😱🎉</div>
 
   <div class="overlay">
     <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt</h1>
-    <p>
-      Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. 
-      Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi =))).  
-      Ở đây viết ngắn gọn thui ạ, chúc bé luôn xinh đẹp iu đời (iu anh nứa).  
-      Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi =))
-    </p>
+    <p>Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi =))). Ở đây viết ngắn gọn thui ạ, chúc bé luôn xinh đẹp iu đời (iu anh nứa). Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi =))</p>
     <button onclick="showMessage()">Cục bột milo cụa em</button>
-    <div class="hidden-message" id="hiddenMessage">
-     Bé cố lên còn về Hà Nội chơi cùng anh, anh nhớ em bé của anh lắm ❤️
-    </div>
+    <div class="hidden-message" id="hiddenMessage">Bé cố lên còn về Hà Nội chơi cùng anh, anh nhớ em bé của anh lắm ❤️</div>
   </div>
 
   <!-- Moving creatures -->
@@ -174,37 +130,60 @@
   <div id="confetti-container"></div>
 
   <script>
+    // Hidden message
     function showMessage() {
-      document.getElementById("hiddenMessage").style.display = "block";
+      document.getElementById("hiddenMessage").style.display="block";
       spawnHearts();
     }
 
-    function spawnHearts() {
-      for (let i = 0; i < 10; i++) {
-        const heart = document.createElement("div");
-        heart.textContent = "❤️";
-        heart.style.position = "absolute";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.bottom = "0px";
-        heart.style.fontSize = (20 + Math.random() * 30) + "px";
-        heart.style.opacity = "1";
-        heart.style.transition = "all 4s ease-out";
+    function spawnHearts(){
+      for(let i=0;i<10;i++){
+        const heart=document.createElement("div");
+        heart.textContent="❤️";
+        heart.style.position="absolute";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.bottom="0px";
+        heart.style.fontSize=(20+Math.random()*30)+"px";
+        heart.style.opacity="1";
+        heart.style.transition="all 4s ease-out";
         document.body.appendChild(heart);
-        setTimeout(() => { heart.style.bottom = "100vh"; heart.style.opacity = "0"; }, 50);
-        setTimeout(() => heart.remove(), 4000);
+        setTimeout(()=>{heart.style.bottom="100vh"; heart.style.opacity="0";},50);
+        setTimeout(()=>heart.remove(),4000);
       }
     }
 
     // Moving creatures
-    const creatures = [
-      {el: document.getElementById('duck'), speed: 1.5, pos: -80},
-      {el: document.getElementById('cat'), speed: 1, pos: -100},
-      {el: document.getElementById('frog'), speed: 2, pos: -60},
-      {el: document.getElementById('octopus'), speed: 1.2, pos: -90},
-      {el: document.getElementById('unicorn'), speed: 1.7, pos: -70}
+    const creatures=[
+      {el:document.getElementById('duck'), speed:1.5, pos:-80},
+      {el:document.getElementById('cat'), speed:1, pos:-100},
+      {el:document.getElementById('frog'), speed:2, pos:-60},
+      {el:document.getElementById('octopus'), speed:1.2, pos:-90},
+      {el:document.getElementById('unicorn'), speed:1.7, pos:-70}
     ];
+    creatures.forEach(c=>{
+      function move(){ 
+        c.pos+=c.speed;
+        if(c.pos>window.innerWidth+150)c.pos=-150;
+        c.el.style.left=c.pos+"px";
+        requestAnimationFrame(move);
+      }
+      move();
+    });
 
-    creatures.forEach(c => {
-      function move() {
-        c.pos += c.speed;
-        if(c.pos
+    // Confetti
+    const colors=["#ff0","#f0f","#0ff","#ff6b81","#ff4757","#00ff7f"];
+    function createConfetti(){
+      const confetti=document.createElement("div");
+      confetti.className="confetti";
+      confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
+      confetti.style.left=Math.random()*window.innerWidth+"px";
+      confetti.style.width=5+Math.random()*10+"px";
+      confetti.style.height=5+Math.random()*10+"px";
+      confetti.style.animationDuration=3+Math.random()*3+"s";
+      document.getElementById("confetti-container").appendChild(confetti);
+      setTimeout(()=>confetti.remove(),6000);
+    }
+    setInterval(createConfetti,200);
+  </script>
+</body>
+</html>
