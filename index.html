@@ -157,40 +157,54 @@
   }
 
   // Moving creatures
-  const creatures=[
+   const creatures=[
     {el:document.getElementById('duck'), speed:1.5, pos:-80},
     {el:document.getElementById('cat'), speed:1, pos:-100},
     {el:document.getElementById('frog'), speed:2, pos:-60},
     {el:document.getElementById('octopus'), speed:1.2, pos:-90},
     {el:document.getElementById('unicorn'), speed:1.7, pos:-70}
   ];
+
   creatures.forEach(c=>{
+    // Randomly choose direction: true = left-to-right, false = right-to-left
+    const leftToRight = Math.random() > 0.5;
+    if(!leftToRight){
+      c.pos = window.innerWidth + Math.random()*100; // start offscreen right
+      c.speed = -c.speed; // move left
+    }
+
     function move(){ 
       c.pos+=c.speed;
-      if(c.pos>window.innerWidth+150)c.pos=-150;
+      if(leftToRight && c.pos>window.innerWidth+150) c.pos=-150;
+      if(!leftToRight && c.pos<-150) c.pos=window.innerWidth+150;
       c.el.style.left=c.pos+"px";
       requestAnimationFrame(move);
     }
     move();
   });
 
-  // 3 Fuggler monsters
+  // 3 Fuggler monsters with horizontal + vertical bounce (keep right-to-left option)
   const fugglerIds = ["fuggler1","fuggler2","fuggler3"];
   const fugglers = fugglerIds.map(id => document.getElementById(id));
   fugglers.forEach(f => {
     function spawnFuggler(){
-      f.style.left = "-60px";
-      const speed = 1 + Math.random()*2;
-      let posX = -60;
+      const leftToRight = Math.random() > 0.5;
+      let posX = leftToRight ? -60 : window.innerWidth+60;
+      f.style.left = posX + "px";
+      const speed = (1 + Math.random()*2) * (leftToRight ? 1 : -1);
       const amplitude = 20 + Math.random()*30; // vertical bounce
       const frequency = 0.02 + Math.random()*0.03;
       const startY = 5 + Math.random()*20;
+
       function move(){
         posX += speed;
         f.style.left = posX + "px";
         f.style.bottom = startY + Math.sin(posX*frequency)*amplitude + "%";
-        if(posX < window.innerWidth+60) requestAnimationFrame(move);
-        else setTimeout(spawnFuggler, Math.random()*5000 + 2000);
+        if((leftToRight && posX < window.innerWidth+60) || (!leftToRight && posX > -60)) {
+          requestAnimationFrame(move);
+        } else {
+          setTimeout(spawnFuggler, Math.random()*5000 + 2000);
+        }
       }
       move();
     }
