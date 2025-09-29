@@ -119,7 +119,7 @@
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" alt="Cat" class="cat" id="cat">
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/6D245F3F-8E60-4D84-A917-73B075D03DB0.JPG" alt="Frog" class="frog" id="frog">
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_6139.PNG" alt="Octopus" class="octopus" id="octopus">
-  <img src="https://github.com/ngxcongtit/lvitbirthday/blob/main/9F4C5F4B-61D4-4FA2-8D6D-408375853B04.JPG" alt="Unicorn" class="unicorn" id="unicorn">
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/9F4C5F4B-61D4-4FA2-8D6D-408375853B04.JPG" alt="Unicorn" class="unicorn" id="unicorn">
 
   <!-- Swinging painting -->
   <div class="painting">
@@ -171,19 +171,52 @@
     });
 
     // Confetti
-    const colors=["#ff0","#f0f","#0ff","#ff6b81","#ff4757","#00ff7f"];
-    function createConfetti(){
-      const confetti=document.createElement("div");
-      confetti.className="confetti";
-      confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
-      confetti.style.left=Math.random()*window.innerWidth+"px";
-      confetti.style.width=5+Math.random()*10+"px";
-      confetti.style.height=5+Math.random()*10+"px";
-      confetti.style.animationDuration=3+Math.random()*3+"s";
-      document.getElementById("confetti-container").appendChild(confetti);
-      setTimeout(()=>confetti.remove(),6000);
+<!-- Chicken Nugget Rain -->
+<div id="nugget-container"></div>
+
+<script>
+  const nuggetContainer = document.getElementById("nugget-container");
+
+  function spawnNugget() {
+    const nugget = document.createElement("img");
+    nugget.src = "https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/nugget.png"; // your nugget image
+    nugget.style.position = "absolute";
+    nugget.style.width = 40 + Math.random() * 20 + "px";
+    nugget.style.left = Math.random() * window.innerWidth + "px";
+    nugget.style.top = "-50px";
+    nugget.style.zIndex = 15;
+    nugget.style.transform = `rotate(${Math.random()*360}deg)`;
+    nuggetContainer.appendChild(nugget);
+
+    const fallSpeed = 2 + Math.random() * 3; // pixels per frame
+    let posY = -50;
+
+    function fall() {
+      posY += fallSpeed;
+      nugget.style.top = posY + "px";
+      nugget.style.transform = `rotate(${posY*2}deg)`; // spinning effect
+      if(posY < window.innerHeight + 50) {
+        requestAnimationFrame(fall);
+      } else {
+        nugget.remove();
+      }
     }
-    setInterval(createConfetti,200);
+    fall();
+  }
+
+  // spawn a nugget every 200ms
+  setInterval(spawnNugget, 200);
+</script>
+
+<style>
+  #nugget-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 15;
+  }
+</style>
   </script>
 </body>
 </html>
