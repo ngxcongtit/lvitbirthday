@@ -76,6 +76,31 @@
       bottom: 25%;
       width: 70px;
     }
+    /* Painting */
+    .painting {
+  position: fixed;
+  top: 20px;         /* ⬆ top corner */
+  right: 20px;       /* ⬅ right corner */
+  width: 180px;
+  height: 220px;
+  background: #fff;
+  border: 10px solid #8b5e3c; /* wooden frame look */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  z-index: 5;
+  overflow: hidden;
+  animation: swing 4s ease-in-out infinite alternate;
+  transform-origin: top center; /* pivot like hanging from the top */
+}
+    .painting img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes swing {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
   </style>
 </head>
 <body>
@@ -100,6 +125,11 @@
   <!-- Cat -->
   <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" 
        alt="Cat" class="cat" id="cat">
+
+  <!-- Painting -->
+  <div class="painting">
+    <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_0637.HEIC" alt="Our Picture">
+  </div>
 
   <script>
     // Show hidden message
@@ -159,39 +189,6 @@
       requestAnimationFrame(moveCat);
     }
     moveCat();
-
-<div class="painting">
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_0637.HEIC" alt="Our Picture">
-</div>
-
-<style>
-.painting {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 180px;
-  height: 220px;
-  background: #fff;
-  border: 10px solid #8b5e3c; /* wooden frame look */
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  z-index: 5;
-  overflow: hidden;
-  animation: swing 4s ease-in-out infinite alternate;
-  transform-origin: top center; /* pivot like hanging from the top */
-}
-
-.painting img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes swing {
-  0% { transform: rotate(-5deg); }
-  100% { transform: rotate(5deg); }
-}
-</style>
   </script>
 </body>
 </html>
