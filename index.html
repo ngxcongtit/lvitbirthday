@@ -6,9 +6,9 @@
   <style>
     * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       height:100vh;
-      background: url("https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/hintergrund.JPG") no-repeat center center/cover;
+      background:url("https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/hintergrund.JPG") no-repeat center center/cover;
       display:flex;
       justify-content:center;
       align-items:center;
@@ -67,11 +67,12 @@
     @keyframes ribbonWave {0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-3px) rotate(-1deg);}100%{transform:translateY(0) rotate(0deg);} }
 
     /* Moving creatures */
-    .duck,.cat,.frog,.octopus,.unicorn {position:absolute; width:60px; height:60px; bottom:10%; left:-80px; z-index:3;}
+    .duck,.cat,.frog,.octopus,.unicorn,.fuggler {position:absolute; width:60px; height:60px; bottom:10%; left:-80px; z-index:3;}
     .cat {bottom:25%; width:70px;}
     .frog {bottom:10%; width:50px;}
     .octopus {bottom:15%; width:60px;}
     .unicorn {bottom:5%; width:65px;}
+    .fuggler {width:50px; height:50px; z-index:4;}
 
     /* Painting */
     .painting {
@@ -93,130 +94,146 @@
     @keyframes swing {0%{transform:rotate(-5deg);}100%{transform:rotate(5deg);}}
 
     /* Confetti */
-    #confetti-container {
-      position:fixed; top:0; left:0; width:100%; height:100%;
-      pointer-events:none; z-index:15;
-    }
-    .confetti {
-      position:absolute; width:10px; height:10px; border-radius:3px; opacity:0.8;
-      animation:fall linear forwards;
-    }
+    #confetti-container {position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:15;}
+    .confetti {position:absolute; width:10px; height:10px; border-radius:3px; opacity:0.8; animation:fall linear forwards;}
     @keyframes fall {0%{transform:translateY(-10px) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
+
+    /* Chicken Nuggets */
+    #nugget-container {position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:15;}
   </style>
 </head>
 <body>
-  <div class="page-ribbon">🎉😱 Đinh Gia Linh hơn Công Tiến 1 tuổi 😱🎉</div>
 
-  <div class="overlay">
-    <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt</h1>
-    <p>Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi =))). Ở đây viết ngắn gọn thui ạ, chúc bé luôn xinh đẹp iu đời (iu anh nứa). Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi =))</p>
-    <button onclick="showMessage()">Cục bột milo cụa em</button>
-    <div class="hidden-message" id="hiddenMessage">Bé cố lên còn về Hà Nội chơi cùng anh, anh nhớ em bé của anh lắm ❤️</div>
-  </div>
+<div class="page-ribbon">🎉😱 Đinh Gia Linh hơn Công Tiến 1 tuổi 😱🎉</div>
 
-  <!-- Moving creatures -->
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" alt="Duck" class="duck" id="duck">
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" alt="Cat" class="cat" id="cat">
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/6D245F3F-8E60-4D84-A917-73B075D03DB0.JPG" alt="Frog" class="frog" id="frog">
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_6139.PNG" alt="Octopus" class="octopus" id="octopus">
-  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/9F4C5F4B-61D4-4FA2-8D6D-408375853B04.JPG" alt="Unicorn" class="unicorn" id="unicorn">
+<div class="overlay">
+  <h1>Chúc mừng sinh nhật người đáng yêu cute nhất hmt</h1>
+  <p>Hehe thế là người anh yêu - chính là em mỗi mình em thôi ạ, đã bước sang tuổi mới òi hêh. Những gì anh muốn nhắn nhủ anh đã viết hết rồi khôm biết đã tới tay em chưa thôi =))). Ở đây viết ngắn gọn thui ạ, chúc bé luôn xinh đẹp iu đời (iu anh nứa). Tận hưởng tuổi mới cụa em đi nhớ, vì anh sắp đuổi kịp tuổi em rồi =))</p>
+  <button onclick="showMessage()">Cục bột milo cụa em</button>
+  <div class="hidden-message" id="hiddenMessage">Bé cố lên còn về Hà Nội chơi cùng anh, anh nhớ em bé của anh lắm ❤️</div>
+</div>
 
-  <!-- Swinging painting -->
-  <div class="painting">
-    <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_0637.HEIC" alt="Our Picture">
-  </div>
+<!-- Moving creatures -->
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/6459D7ED-1EB7-415F-B0CC-7297CF92862E.JPG" alt="Duck" class="duck" id="duck">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/IMG_9417.PNG" alt="Cat" class="cat" id="cat">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/6D245F3F-8E60-4D84-A917-73B075D03DB0.JPG" alt="Frog" class="frog" id="frog">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_6139.PNG" alt="Octopus" class="octopus" id="octopus">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_3407.JPEG" alt="Unicorn" class="unicorn" id="unicorn">
 
-  <!-- Confetti -->
-  <div id="confetti-container"></div>
+<!-- 3 Fuggler monsters -->
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/81IKJChnfXL-removebg-preview.png" alt="Fuggler1" class="fuggler" id="fuggler1">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/s-l1200-removebg-preview.png" alt="Fuggler2" class="fuggler" id="fuggler2">
+<img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/61VoVCy%2BOyL-removebg-preview.png" alt="Fuggler3" class="fuggler" id="fuggler3">
 
-  <script>
-    // Hidden message
-    function showMessage() {
-      document.getElementById("hiddenMessage").style.display="block";
-      spawnHearts();
-    }
+<!-- Painting -->
+<div class="painting">
+  <img src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/refs/heads/main/IMG_0637.HEIC" alt="Our Picture">
+</div>
 
-    function spawnHearts(){
-      for(let i=0;i<10;i++){
-        const heart=document.createElement("div");
-        heart.textContent="❤️";
-        heart.style.position="absolute";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.bottom="0px";
-        heart.style.fontSize=(20+Math.random()*30)+"px";
-        heart.style.opacity="1";
-        heart.style.transition="all 4s ease-out";
-        document.body.appendChild(heart);
-        setTimeout(()=>{heart.style.bottom="100vh"; heart.style.opacity="0";},50);
-        setTimeout(()=>heart.remove(),4000);
-      }
-    }
-
-    // Moving creatures
-    const creatures=[
-      {el:document.getElementById('duck'), speed:1.5, pos:-80},
-      {el:document.getElementById('cat'), speed:1, pos:-100},
-      {el:document.getElementById('frog'), speed:2, pos:-60},
-      {el:document.getElementById('octopus'), speed:1.2, pos:-90},
-      {el:document.getElementById('unicorn'), speed:1.7, pos:-70}
-    ];
-    creatures.forEach(c=>{
-      function move(){ 
-        c.pos+=c.speed;
-        if(c.pos>window.innerWidth+150)c.pos=-150;
-        c.el.style.left=c.pos+"px";
-        requestAnimationFrame(move);
-      }
-      move();
-    });
-
-    // Confetti
-<!-- Chicken Nugget Rain -->
+<!-- Confetti & Nuggets -->
+<div id="confetti-container"></div>
 <div id="nugget-container"></div>
 
 <script>
-  const nuggetContainer = document.getElementById("nugget-container");
+  // Hidden message
+  function showMessage() {
+    document.getElementById("hiddenMessage").style.display="block";
+    spawnHearts();
+  }
+  function spawnHearts(){
+    for(let i=0;i<10;i++){
+      const heart=document.createElement("div");
+      heart.textContent="❤️";
+      heart.style.position="absolute";
+      heart.style.left=Math.random()*window.innerWidth+"px";
+      heart.style.bottom="0px";
+      heart.style.fontSize=(20+Math.random()*30)+"px";
+      heart.style.opacity="1";
+      heart.style.transition="all 4s ease-out";
+      document.body.appendChild(heart);
+      setTimeout(()=>{heart.style.bottom="100vh"; heart.style.opacity="0";},50);
+      setTimeout(()=>heart.remove(),4000);
+    }
+  }
 
+  // Moving creatures
+  const creatures=[
+    {el:document.getElementById('duck'), speed:1.5, pos:-80},
+    {el:document.getElementById('cat'), speed:1, pos:-100},
+    {el:document.getElementById('frog'), speed:2, pos:-60},
+    {el:document.getElementById('octopus'), speed:1.2, pos:-90},
+    {el:document.getElementById('unicorn'), speed:1.7, pos:-70}
+  ];
+  creatures.forEach(c=>{
+    function move(){ 
+      c.pos+=c.speed;
+      if(c.pos>window.innerWidth+150)c.pos=-150;
+      c.el.style.left=c.pos+"px";
+      requestAnimationFrame(move);
+    }
+    move();
+  });
+
+  // 3 Fuggler monsters
+  const fugglerIds = ["fuggler1","fuggler2","fuggler3"];
+  const fugglers = fugglerIds.map(id => document.getElementById(id));
+  fugglers.forEach(f => {
+    setInterval(()=>{
+      f.style.bottom = 10 + Math.random()*30 + "%";
+      f.style.left = "-60px";
+      const speed = 1.5 + Math.random()*1.5;
+      let pos = -60;
+      function move(){
+        pos += speed;
+        f.style.left = pos + "px";
+        if(pos < window.innerWidth+60) requestAnimationFrame(move);
+      }
+      move();
+    }, 5000 + Math.random()*7000);
+  });
+
+  // Chicken nuggets
+  const nuggetContainer = document.getElementById("nugget-container");
   function spawnNugget() {
     const nugget = document.createElement("img");
-    nugget.src = "https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/nugget.png"; // your nugget image
-    nugget.style.position = "absolute";
-    nugget.style.width = 40 + Math.random() * 20 + "px";
-    nugget.style.left = Math.random() * window.innerWidth + "px";
-    nugget.style.top = "-50px";
-    nugget.style.zIndex = 15;
-    nugget.style.transform = `rotate(${Math.random()*360}deg)`;
+    nugget.src="https://raw.githubusercontent.com/ngxcongtit/lvitbirthday/main/nugget.png";
+    nugget.style.position="absolute";
+    nugget.style.width=40 + Math.random()*20 +"px";
+    nugget.style.left=Math.random()*window.innerWidth + "px";
+    nugget.style.top="-50px";
+    nugget.style.zIndex=15;
+    nugget.style.transform=`rotate(${Math.random()*360}deg)`;
     nuggetContainer.appendChild(nugget);
-
-    const fallSpeed = 2 + Math.random() * 3; // pixels per frame
-    let posY = -50;
-
-    function fall() {
-      posY += fallSpeed;
-      nugget.style.top = posY + "px";
-      nugget.style.transform = `rotate(${posY*2}deg)`; // spinning effect
-      if(posY < window.innerHeight + 50) {
-        requestAnimationFrame(fall);
-      } else {
-        nugget.remove();
-      }
+    let posY=-50;
+    const fallSpeed=2+Math.random()*3;
+    function fall(){
+      posY+=fallSpeed;
+      nugget.style.top=posY+"px";
+      nugget.style.transform=`rotate(${posY*2}deg)`;
+      if(posY<window.innerHeight+50) requestAnimationFrame(fall);
+      else nugget.remove();
     }
     fall();
   }
+  setInterval(spawnNugget,200);
 
-  // spawn a nugget every 200ms
-  setInterval(spawnNugget, 200);
-</script>
-
-<style>
-  #nugget-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 15;
+  // Confetti
+  const confettiContainer=document.getElementById("confetti-container");
+  function spawnConfetti(){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.backgroundColor=`hsl(${Math.random()*360},80%,60%)`;
+    c.style.left=Math.random()*window.innerWidth+"px";
+    c.style.top="-10px";
+    c.style.width=5+Math.random()*10+"px";
+    c.style.height=c.style.width;
+    confettiContainer.appendChild(c);
+    const speed=2+Math.random()*3;
+    let posY=-10;
+    function fall(){posY+=speed;c.style.top=posY+"px";if(posY<window.innerHeight+10) requestAnimationFrame(fall); else c.remove();}
+    fall();
   }
-</style>
-  </script>
+  setInterval(spawnConfetti,150);
+</script>
 </body>
 </html>
